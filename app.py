@@ -58,6 +58,9 @@ def generar_pdf():
     cat2Name           = data.get('cat2Name', '')
     cat2Tx             = data.get('cat2Tx', 0)
     cat2Monto          = data.get('cat2Monto', 0)
+    cat3Name           = data.get('cat3Name', '')
+    cat3Tx             = data.get('cat3Tx', 0)
+    cat3Monto          = data.get('cat3Monto', 0)
     topCats            = data.get('topCats', [])
     topProds           = data.get('topProds', [])
     fecha              = data.get('fecha', '')
@@ -201,12 +204,14 @@ def generar_pdf():
         [Paragraph('Categoria',sTH), Paragraph('Transacciones',sTH), Paragraph('Monto total',sTH)],
         [Paragraph(cat1Name,sTD),    Paragraph(str(cat1Tx),sTDR),    Paragraph(fmt_money(cat1Monto),sTDR)],
         [Paragraph(cat2Name,sTDB),   Paragraph(str(cat2Tx),sTDBR),   Paragraph(fmt_money(cat2Monto),sTDBR)],
+        [Paragraph(cat3Name,sTD),    Paragraph(str(cat3Tx),sTDR),    Paragraph(fmt_money(cat3Monto),sTDR)],
     ]
     ct = Table(cr, colWidths=[88*mm, 43*mm, 43*mm])
     ct.setStyle(TableStyle([
         ('BACKGROUND',(0,0),(-1,0),RED),
         ('BACKGROUND',(0,1),(-1,1),LGRAY),
         ('BACKGROUND',(0,2),(-1,2),WHITE),
+        ('BACKGROUND',(0,3),(-1,3),LGRAY),
         ('ALIGN',(1,0),(-1,-1),'RIGHT'),
         ('VALIGN',(0,0),(-1,-1),'MIDDLE'),
         ('TOPPADDING',(0,0),(-1,-1),7),
